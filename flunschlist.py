@@ -41,19 +41,24 @@ def initdb_command():
 @app.route('/')
 def show_entries():
 	db = get_db()
-	cur = db.execute('select title, owner from flunschs order by owner')
+	cur = db.execute('select flunschs.title, flunschs.owner, flunscher.name from flunschs inner join flunscher on flunschs.owner=flunscher.id')
 	flunschs = cur.fetchall()
+	print flunschs
 	flunsch_dict = {}
 	for flunsch in flunschs:
-		if flunsch[1] not in flunsch_dict:
-			flunsch_dict[flunsch[1]] = []
-		flunsch_dict[flunsch[1]].append(flunsch[0])
+		if flunsch[2] not in flunsch_dict:
+			flunsch_dict[flunsch[2]] = []
+		flunsch_dict[flunsch[2]].append(flunsch[0])
 		
 	return render_template('index.html', fls = flunsch_dict)
 
 @app.route('/add_flunsch', methods=['POST'])
 def add_flunsch():
-	return render_template('addflunsch.html')
+	db = get_db()
+	cur = db.execute('select name, id from flunscher')
+	flunscher = cur.fetchall()
+	print flunscher
+	return render_template('addflunsch.html', flser = flunscher)
 
 @app.route('/add_flunsch_to_db', methods=['POST'])
 def add_flunsch_to_db():

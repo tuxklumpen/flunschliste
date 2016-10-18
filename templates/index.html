@@ -4,8 +4,8 @@
 	<form action="{{ url_for('add_flunsch') }}" method="post"><input type='submit' value="Flunsch Hinzufügen"></form>
 	{% for key in fls: %}
 		<h2>{{ key }}</h2><br>
-		{%for flunsch in fls[key] %}
-			{{flunsch}}<form action="{{ url_for('remove_flunsch_from_db') }}" method="post"><input type="hidden" name="title" value={{ flunsch }} /><input type='submit' value="Löschen"></form><br>
+		{%for flunsch in fls[key]: %}
+			{{flunsch}}<form action="{{ url_for('remove_flunsch_from_db') }}" method="post"><input type="hidden" name="title" value={{ flunsch }} /><input type='submit' value="Löschen"></form>
 		{% endfor %}
 	{% endfor %}
 {% endblock %}
