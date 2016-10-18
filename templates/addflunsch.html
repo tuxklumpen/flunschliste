@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+	<h1>Flunsch hinzufügen</h1>
+	<form action="{{ url_for('add_flunsch_to_db') }}" method=post class=add-entry>
+	<dl>
+		<dt>Flunsch:
+		<dd><input type=text size=30 name=title>
+		<dt>Flunscher:
+		<dd><input type=text size=30 name=owner>
+		<dt>Beschreibung:
+		<dd><textarea name=desc rows=5 cols=40></textarea>
+		<dd><input type=submit value=Hinzufügen>
+	</dl>
+</form>
+{% endblock %}
