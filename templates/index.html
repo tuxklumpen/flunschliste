@@ -1,11 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
-	<h1>Flunschliste</h1>
-	<form action="{{ url_for('add_flunsch') }}" method="post"><input type='submit' value="Flunsch Hinzufügen"></form>
+	<h1 class="headtitle">Flunschliste</h1>
+	<div class="content">
 	{% for key in fls: %}
-		<h2>{{ key }}</h2><br>
+		<div class="flunsch-list">
+		<h2 class="flunscher">{{ key }}</h2>
 		{%for flunsch in fls[key]: %}
-			{{flunsch}}<form action="{{ url_for('remove_flunsch_from_db') }}" method="post"><input type="hidden" name="title" value={{ flunsch }} /><input type='submit' value="Löschen"></form>
+			<div class="flunsch">
+				<div class="flunsch-title">{{flunsch.title}}</div>
+				<div class="flunsch-description">{{flunsch.description}}</div>
+				<form action="{{ url_for('remove_flunsch_from_db') }}" method="post" style="display: inline;">
+					<input type="hidden" name="id" value={{ flunsch.id }} />
+					<input type='submit' value="Löschen">
+				</form>
+			</div>
 		{% endfor %}
+		<form action="{{ url_for('add_flunsch') }}" method="post" class="add-button">
+			<input type="hidden" name="name" value={{ key }} />	
+			<input type='submit' value="Flunsch Hinzufügen">
+		</form>
+		</div>
 	{% endfor %}
+	</div>
 {% endblock %}

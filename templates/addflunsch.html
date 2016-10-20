@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
-	<h1>Flunsch hinzufügen</h1>
-	<form action="{{ url_for('add_flunsch_to_db') }}" method=post class=add-entry>
-	<dl>
-		<dt>Flunsch:
-		<dd><input type=text size=30 name=title>
-		<dt>Flunscher:
-		<dd><select name=owner>
-		{% for flunscher in flser %}
-			<option value={{flunscher[1]}}>{{flunscher[0]}}</option>
-		{% endfor %}
-		<dt>Beschreibung:
-		<dd><textarea name=desc rows=5 cols=40></textarea>
-		<dd><input type=submit value=Hinzufügen>
-	</dl>
-</form>
+	<h1>Flunsch zu {{flser[0][0]}} hinzufügen</h1>
+	<div class="add-flunsch-form">
+		<form action="{{ url_for('add_flunsch_to_db') }}" method=post class=add-entry>
+			<div class="flunsch-name">
+				Flunsch:<br>
+				<input type=text size=30 name=title>
+			</div>
+			<div class="flunsch-desc">
+				Beschreibung:<br>	
+				<textarea name=desc rows=5 cols=40></textarea>
+			</div>
+			<input type=hidden name=owner value={{ flser[0][1] }}>
+			<input type=submit value=Hinzufügen>
+		</form>
+	</div>
 {% endblock %}

@@ -8,5 +8,8 @@ create table flunschs (
 	id integer primary key autoincrement,
 	title text not null,
 	owner integer not null,
-	desc text
+	description text
 );
+insert into flunscher (name) values ('Fabian');
+insert into flunscher (name) values ('Marita');
+insert into flunscher (name) values ('Hans-Jürgen');

@@ -1,0 +1,54 @@
+.content div.flunsch-list {
+	float : left;
+	width : 32%;
+	margin-right : 1%;
+}
+
+.flunsch-list {
+	border : 1px solid #555;
+	margin-top : 15px;
+	width: 25%;
+	padding-bottom : 5px;
+}
+
+.flunsch {
+	border: 1px dashed #aaa;
+	padding: 5px;
+	margin : 5px;
+}
+
+.flunscher {
+	font-size : 26pt;
+	font-weight: bold;
+	text-align : center;
+	margin : 0px;
+}
+
+.flunsch-title {
+	font-size : 16pt;
+	font-weight: bold;
+}
+
+.flunsch-description {
+	padding : 15px;
+}
+
+input[type=submit] {
+    background:#fff; 
+    border:1px solid #aaa;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding:2.5px 5px; 
+}
+
+.flunsch-list .add-button {
+	display: inline;	
+	margin : 5px;
+}
+
+.headtitle {
+	text-align : center;
+	font-size : 30pt;
+	margin : 0px;
+}
